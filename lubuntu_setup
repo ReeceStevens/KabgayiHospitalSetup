@@ -1,0 +1,24 @@
+#!/bin/bash
+
+echo "SYSTEM SETUP FOR LUBUNTU- KABGAYI HOSPITAL"
+
+echo "----- Beginning Installation of Important Programs -----"
+apt-get install empathy dropbox powertop htop
+#########################################
+# Custom LibreOffice Suite Installation #
+#########################################
+cd /tmp
+curl -L -O http://download.documentfoundation.org/libreoffice/stable/4.2.5/deb/x86/LibreOffice_4.2.5_Linux_x86_deb.tar.gz
+tar -xzvf LibreOffice_4.2.5_Linux_x86_deb.tar.gz
+cd LibreOffice_4.2.5_Linux_x86
+
+
+echo "----- Installation complete! Beginning System Configuration -----"
+
+echo -n "Setting up startup programs... "
+echo "exec dropboxd" > ~/.xinitrc
+echo "done!"
+
+echo "----- Done! System Ready for Use! -----"
+
+
