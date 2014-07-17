@@ -10,15 +10,23 @@ apt-get install empathy dropbox powertop htop
 cd /tmp
 curl -L -O http://download.documentfoundation.org/libreoffice/stable/4.2.5/deb/x86/LibreOffice_4.2.5_Linux_x86_deb.tar.gz
 tar -xzvf LibreOffice_4.2.5_Linux_x86_deb.tar.gz
-cd LibreOffice_4.2.5_Linux_x86
-
-
-echo "----- Installation complete! Beginning System Configuration -----"
-
+if [ -f LibreOffice_4.2.5_Linux_x86] then		
+	cd LibreOffice_4.2.5_Linux_x86
+	# Do ./configure, make, make install here with setup options
+	echo "----- Installation complete! Beginning System Configuration -----"
+else
+	echo "Download of LibreOffice failed! Check your network connection!"
+	rm LibreOffice_4.2.5_Linux_x86_deb.tar.gz
+	echo "Skipping LibreOffice installation. Try again later."
+	echo "----- Beginning System Configuration -----"
+fi
 echo -n "Setting up startup programs... "
-echo "exec dropboxd" > ~/.xinitrc
-echo "done!"
-
+if [ -f ~/.xinitrc] then
+	echo "exec dropboxd" > ~/.xinitrc
+	echo "done!"
+else 
+	echo "No .xinitrc file found. Programs not set to startup."
+fi
 echo "----- Done! System Ready for Use! -----"
 
 
