@@ -3,7 +3,7 @@
 echo "SYSTEM SETUP FOR LUBUNTU- KABGAYI HOSPITAL"
 
 echo "----- Beginning Installation of Important Programs -----"
-#apt-get install empathy dropbox powertop htop
+apt-get install empathy dropbox powertop htop
 #########################################
 # Custom LibreOffice Suite Installation #
 #########################################
