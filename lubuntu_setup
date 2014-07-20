@@ -19,7 +19,8 @@ else
 	echo "Done!"
 	echo "No LibreOffice tarball found in USB media. Beginning download."
  	curl -L -O http://download.documentfoundation.org/libreoffice/stable/4.2.5/deb/x86/LibreOffice_4.2.5_Linux_x86_deb.tar.gz
-fi 
+fi
+cd /tmp
 tar -xzvf LibreOffice_4.2.5_Linux_x86_deb.tar.gz
 if [ -f "LibreOffice_4.2.5_Linux_x86" ] 
 then		
