@@ -3,14 +3,26 @@
 echo "SYSTEM SETUP FOR LUBUNTU- KABGAYI HOSPITAL"
 
 echo "----- Beginning Installation of Important Programs -----"
-apt-get install empathy dropbox powertop htop
+#apt-get install empathy dropbox powertop htop
 #########################################
 # Custom LibreOffice Suite Installation #
 #########################################
-cd /tmp
-curl -L -O http://download.documentfoundation.org/libreoffice/stable/4.2.5/deb/x86/LibreOffice_4.2.5_Linux_x86_deb.tar.gz
+echo -n "Beginning search for LibreOffice tarball..."
+cd /media
+TARBALL_LOCATION='find . | grep "LibreOffice_4.2.5_Linux_x86_deb.tar.gz"'
+if [ -f "$TARBALL_LOCATION" ] 
+then
+	echo "Done!"
+	echo "Found LibreOffice on USB media. Copying and installing."
+	cp $TARBALL_LOCATION /tmp/
+else
+	echo "Done!"
+	echo "No LibreOffice tarball found in USB media. Beginning download."
+ 	curl -L -O http://download.documentfoundation.org/libreoffice/stable/4.2.5/deb/x86/LibreOffice_4.2.5_Linux_x86_deb.tar.gz
+fi 
 tar -xzvf LibreOffice_4.2.5_Linux_x86_deb.tar.gz
-if [ -f LibreOffice_4.2.5_Linux_x86] then		
+if [ -f "LibreOffice_4.2.5_Linux_x86" ] 
+then		
 	cd LibreOffice_4.2.5_Linux_x86
 	# Do ./configure, make, make install here with setup options
 	echo "----- Installation complete! Beginning System Configuration -----"
@@ -21,7 +33,8 @@ else
 	echo "----- Beginning System Configuration -----"
 fi
 echo -n "Setting up startup programs... "
-if [ -f ~/.xinitrc] then
+if [ -f "~/.xinitrc" ] 
+then
 	echo "exec dropboxd" > ~/.xinitrc
 	echo "done!"
 else 
