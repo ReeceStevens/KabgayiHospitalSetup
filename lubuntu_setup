@@ -15,16 +15,17 @@ then
 	echo "Done!"
 	echo "Found LibreOffice on USB media. Copying and installing."
 	cp $TARBALL_LOCATION /tmp/
+	cd /tmp
 else
 	echo "Done!"
 	echo "No LibreOffice tarball found in USB media. Beginning download."
+	cd /tmp
  	curl -L -O http://download.documentfoundation.org/libreoffice/stable/4.2.5/deb/x86/LibreOffice_4.2.5_Linux_x86_deb.tar.gz
 fi
-cd /tmp
 tar -xzvf LibreOffice_4.2.5_Linux_x86_deb.tar.gz
-if [ -f "LibreOffice_4.2.5_Linux_x86" ] 
+if [ -f "LibreOffice_4.2.5.2_Linux_x86_deb" ] 
 then		
-	cd LibreOffice_4.2.5_Linux_x86
+	cd LibreOffice_4.2.5.2_Linux_x86_deb
 	# Do ./configure, make, make install here with setup options
 	echo "----- Installation complete! Beginning System Configuration -----"
 else
@@ -39,6 +40,7 @@ then
 	echo "exec dropboxd" > ~/.xinitrc
 	echo "done!"
 else 
+	echo "error!"
 	echo "No .xinitrc file found. Programs not set to startup."
 fi
 echo "----- Done! System Ready for Use! -----"
